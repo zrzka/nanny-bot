@@ -1,0 +1,10 @@
+FROM balenalib/%%BALENA_MACHINE_NAME%%-debian
+
+ENV INITSYSTEM=on
+ENV DEBIAN_FRONTEND=noninteractive
+
+RUN apt-get -q update && apt-get install -yq --no-install-recommends ffmpeg
+
+COPY ffserver.conf /app/ffserver.conf
+COPY app.sh /app/app.sh
+CMD ["bash", "/app/app.sh"]
