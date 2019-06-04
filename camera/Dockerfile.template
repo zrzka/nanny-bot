@@ -1,4 +1,4 @@
-FROM balenalib/%%BALENA_MACHINE_NAME%%-debian
+FROM balenalib/%%BALENA_MACHINE_NAME%%-ubuntu:run
 
 ENV INITSYSTEM=on
 ENV DEBIAN_FRONTEND=noninteractive
