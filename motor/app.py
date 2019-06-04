@@ -1,5 +1,6 @@
 import atexit
 import time
+import os
 from Adafruit_MotorHAT import Adafruit_MotorHAT
 import traitlets
 from traitlets.config.configurable import Configurable
@@ -84,6 +85,10 @@ class Robot(SingletonConfigurable):
         self.left_motor.value = 0
         self.right_motor.value = 0
 
+if os.environ.get('NB_MOTOR', None) is None:
+    print("Motors off")
+    while True:
+        time.sleep(1)
 
 robot = Robot()
 step = 0
