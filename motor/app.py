@@ -5,6 +5,8 @@ from Adafruit_MotorHAT import Adafruit_MotorHAT
 import traitlets
 from traitlets.config.configurable import Configurable
 from traitlets.config.configurable import SingletonConfigurable
+from flask_api import FlaskAPI
+from flask import current_app
 
 
 class Motor(Configurable):
@@ -85,32 +87,41 @@ class Robot(SingletonConfigurable):
         self.left_motor.value = 0
         self.right_motor.value = 0
 
-if os.environ.get('NB_MOTOR', None) is None:
-    print("Motors off")
-    while True:
-        time.sleep(1)
 
-robot = Robot()
-step = 0
-while True:
-    if step == 0:
-        print("Forward")
-        robot.forward()
-    elif step == 1:
-        print("Backward")
-        robot.backward()
-    elif step == 2:
-        print("Left")
-        robot.left()
-    elif step == 3:
-        print("Right")
-        robot.right()
-    else:
-        print("Stop")
-        robot.stop()
+app = FlaskAPI(__name__)
+app.robot_speed = 0.5
+app.robot = Robot()
 
-    step += 1
-    if step > 4:
-        step = 0
 
-    time.sleep(10)
+@app.route('/stop')
+def stop():
+    current_app.robot.stop()
+    return {}
+
+
+@app.route('/left')
+def left():
+    current_app.robot.left(speed=current_app.robot_speed)
+    return {}
+
+
+@app.route('/right')
+def right():
+    current_app.robot.right(speed=current_app.robot_speed)
+    return {}
+
+
+@app.route('/forward')
+def forward():
+    current_app.robot.forward(speed=current_app.robot_speed)
+    return {}
+
+
+@app.route('/backward')
+def backward():
+    current_app.robot.backward(speed=current_app.robot_speed)
+    return {}
+
+
+if __name__ == "__main__":
+    app.run(debug=True, host='0.0.0.0', port=5000)
