@@ -8,9 +8,9 @@ services:
         restart: always
         build: ./motor
         privileged: true
+        ports:
+            - "80:5000"        
     camera:
         restart: always
         build: ./camera
         privileged: true
-        ports:
-            - "80:3000"
