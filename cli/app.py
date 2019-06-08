@@ -31,7 +31,7 @@ class Robot():
         print(f'{r}')
 
 
-robot = Robot('http://192.168.1.64:5000')
+robot = Robot('http://192.168.1.65')
 
 up = False
 down = False
