@@ -73,6 +73,7 @@ RUN \
   curl -sSL https://github.com/zrzka/python-wheel-aarch64/releases/download/jetson-nano-1.0/numpy-1.16.4-cp36-cp36m-linux_aarch64.whl --output wheel/numpy-1.16.4-cp36-cp36m-linux_aarch64.whl && \
   curl -sSL https://github.com/zrzka/python-wheel-aarch64/releases/download/jetson-nano-1.0/pyzmq-18.0.1-cp36-cp36m-linux_aarch64.whl --output wheel/pyzmq-18.0.1-cp36-cp36m-linux_aarch64.whl && \
   curl -sSL https://github.com/zrzka/python-wheel-aarch64/releases/download/jetson-nano-1.0/torch-1.1.0-cp36-cp36m-linux_aarch64.whl --output wheel/torch-1.1.0-cp36-cp36m-linux_aarch64.whl && \
+  # DON'T CHANGE THE ORDER - otherwise pip will fetch sources and will build them again
   pip3 install -U --no-cache-dir wheel/grpcio-1.21.1-cp36-cp36m-linux_aarch64.whl && \
   pip3 install -U --no-cache-dir wheel/numpy-1.16.4-cp36-cp36m-linux_aarch64.whl && \
   pip3 install -U --no-cache-dir wheel/h5py-2.9.0-cp36-cp36m-linux_aarch64.whl && \
