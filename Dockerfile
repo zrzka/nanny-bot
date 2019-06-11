@@ -89,7 +89,8 @@ RUN \
   pip3 install -U --no-cache-dir wheel && \
   pip3 install -U --no-cache-dir traitlets ipywidgets && \
   pip3 install -U --no-cache-dir absl-py py-cpuinfo psutil portpicker six mock requests gast astor termcolor && \
-  pip3 install -U --no-cache-dir --pre --extra-index-url https://developer.download.nvidia.com/compute/redist/jp/v42 tensorflow-gpu==1.13.1+nv19.5
+  pip3 install -U --no-cache-dir --pre --extra-index-url https://developer.download.nvidia.com/compute/redist/jp/v42 tensorflow-gpu==1.13.1+nv19.5 && \
+  pip3 install -U --no-cache-dir torchvision
 
 # JetBot
 # TODO: Uncomment cleanup
