@@ -1,0 +1,17 @@
+version: '2.1'
+networks: {}
+services:
+  jetbot:
+    build:
+      context: jetbot
+    privileged: true
+    restart: always
+    network_mode: host
+    cap_add: 
+      - SYS_RAWIO
+    labels:
+      io.resin.features.kernel-modules: '1'
+      io.resin.features.firmware: '1'
+      io.resin.features.dbus: '1'
+      io.resin.features.supervisor-api: '1'
+      io.resin.features.resin-api: '1'
