@@ -14,9 +14,9 @@ optimised yet and it still contains all the gcc, g++, nvcc, ... tools.
   * Files will be stored in the `~/Downloads/nvidia/sdkm_downloads` folder
 * Run `./prepare.sh` script
   * It creates the `nvidia` folder with all required files
-  * It removes the `.gitignore` file otherwise `balena push` will ignore the `nvidia` folder [1]
+  * It removes `/nvidia` line from the `.gitignore` file [1]
 
-[1] `.gitignore` file must be removed otherwise `balena push` won't push the `nvidia` folder.
+[1] `.gitignore` file must be updated otherwise `balena push` won't push the `nvidia` folder.
 
 This is how the `nvidia` folder should look like:
 
@@ -43,10 +43,11 @@ nvidia/
 │   ├── python3-libnvinfer_5.0.6-1+cuda10.0_arm64.deb
 │   ├── tensorrt_5.0.6.3-1+cuda10.0_arm64.deb
 │   └── uff-converter-tf_5.0.6-1+cuda10.0_arm64.deb
+├── nvgstapps.tbz2
 └── nvidia_drivers.tbz2
 ```
 
-## Step 2 - Build it
+## Step 2 - Build & deploy
 
 ```sh
 balena push jetbot
