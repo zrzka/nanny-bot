@@ -55,6 +55,7 @@ echo "Extracting configuration & NVIDIA drivers ..."
 tar xjf "${SDKM_DLPATH}/Jetson-210_Linux_R32.1.0_aarch64.tbz2" -C ./tmp/
 mv ./tmp/Linux_for_Tegra/nv_tegra/config.tbz2 ./tmp/
 mv ./tmp/Linux_for_Tegra/nv_tegra/nvidia_drivers.tbz2 ./tmp/
+mv ./tmp/Linux_for_Tegra/nv_tegra/nv_sample_apps/nvgstapps.tbz2 ./tmp/
 rm -rf ./tmp/Linux_for_Tegra
 
 if [ -d ./nvidia ]; then
