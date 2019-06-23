@@ -65,10 +65,9 @@ fi
 echo "Renaming temporary folder to nvidia ..."
 mv tmp nvidia
 
-echo "Removing .gitignore in the project root ..."
-if [ -f ./.gitignore ]; then
-  rm -f ./.gitignore
-fi
+echo "Filtering out /nvidia/ from the .gitignore file ..."
+grep -v nvidia .gitignore > .gitignore.nvidia
+mv -f .gitignore.nvidia .gitignore 
 
 echo "Done. You may now run: balena push DEVICE_IP"
 echo
