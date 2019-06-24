@@ -58,12 +58,12 @@ mv ./tmp/Linux_for_Tegra/nv_tegra/nvidia_drivers.tbz2 ./tmp/
 mv ./tmp/Linux_for_Tegra/nv_tegra/nv_sample_apps/nvgstapps.tbz2 ./tmp/
 rm -rf ./tmp/Linux_for_Tegra
 
-if [ -d ./nvidia ]; then
+if [ -d jetbot/nvidia ]; then
   echo "Removing the old nvidia folder ..."
-  rm -rf ./nvidia
+  rm -rf jetbot/nvidia
 fi
 echo "Renaming temporary folder to nvidia ..."
-mv tmp nvidia
+mv tmp jetbot/nvidia
 
 echo "Filtering out /nvidia/ from the .gitignore file ..."
 grep -v nvidia .gitignore > .gitignore.nvidia
