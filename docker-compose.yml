@@ -1,4 +1,6 @@
 version: '2.1'
+volumes:
+  jetbot-data: {}
 networks: {}
 services:
   jetbot:
@@ -7,6 +9,10 @@ services:
     privileged: true
     restart: always
     network_mode: host
+    volumes:
+      - 'jetbot-data:/data'
+    ports:
+      - "80"      
     cap_add: 
       - SYS_RAWIO
     labels:
