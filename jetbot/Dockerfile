@@ -133,18 +133,23 @@ RUN \
   rm -f Camera_overrides.tar.gz
 
 # JetBot
+# 
+# * Do not clean up
+# * start.sh script will provision Jupyter notebooks from the JetBot folder -> /data/notebooks
 RUN \
   git clone -b v0.3.0 --single-branch --depth 1 https://github.com/NVIDIA-AI-IOT/jetbot.git && \
   cd jetbot && \
   python3 setup.py install
-# TODO: Uncomment cleanup
-#  cd .. && rm -rf jetbot  
 
 # Development - to be removed
 RUN \
   apt-get install -y xinit xterm ssh
 
-CMD [ "sleep", "infinity" ]
+# Password 'jetbot' (without quotes)
+COPY jupyter_notebook_config.json /usr/src/app/jupyter_notebook_config.json
+COPY start.sh /usr/src/app/start.sh
+
+CMD [ "/usr/src/app/start.sh" ]
 
 # Run image
 #
