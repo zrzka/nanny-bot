@@ -1,0 +1,124 @@
+--- tegra210-p3448-0000-p3449-0000-a02.dts	2019-06-28 08:34:40.126449530 +0200
++++ tegra210-p3448-0000-p3449-0000-a02.dts	2019-06-28 08:33:16.276219427 +0200
+@@ -2363,7 +2363,7 @@
+ 
+ 			aud_mclk_pbb0 {
+ 				nvidia,pins = "aud_mclk_pbb0";
+-				nvidia,function = "rsvd1";
++				nvidia,function = "aud";
+ 				nvidia,pull = <0x2>;
+ 				nvidia,tristate = <0x0>;
+ 				nvidia,enable-input = <0x1>;
+@@ -2371,7 +2371,7 @@
+ 
+ 			spi2_mosi_pb4 {
+ 				nvidia,pins = "spi2_mosi_pb4";
+-				nvidia,function = "rsvd2";
++				nvidia,function = "spi2";
+ 				nvidia,pull = <0x1>;
+ 				nvidia,tristate = <0x0>;
+ 				nvidia,enable-input = <0x1>;
+@@ -2379,7 +2379,7 @@
+ 
+ 			spi2_miso_pb5 {
+ 				nvidia,pins = "spi2_miso_pb5";
+-				nvidia,function = "rsvd2";
++				nvidia,function = "spi2";
+ 				nvidia,pull = <0x1>;
+ 				nvidia,tristate = <0x0>;
+ 				nvidia,enable-input = <0x1>;
+@@ -2387,7 +2387,7 @@
+ 
+ 			spi2_sck_pb6 {
+ 				nvidia,pins = "spi2_sck_pb6";
+-				nvidia,function = "rsvd2";
++				nvidia,function = "spi2";
+ 				nvidia,pull = <0x1>;
+ 				nvidia,tristate = <0x0>;
+ 				nvidia,enable-input = <0x1>;
+@@ -2395,7 +2395,7 @@
+ 
+ 			spi2_cs0_pb7 {
+ 				nvidia,pins = "spi2_cs0_pb7";
+-				nvidia,function = "rsvd2";
++				nvidia,function = "spi2";
+ 				nvidia,pull = <0x1>;
+ 				nvidia,tristate = <0x0>;
+ 				nvidia,enable-input = <0x1>;
+@@ -2403,7 +2403,7 @@
+ 
+ 			spi2_cs1_pdd0 {
+ 				nvidia,pins = "spi2_cs1_pdd0";
+-				nvidia,function = "rsvd1";
++				nvidia,function = "spi2";
+ 				nvidia,pull = <0x1>;
+ 				nvidia,tristate = <0x0>;
+ 				nvidia,enable-input = <0x1>;
+@@ -2547,7 +2547,7 @@
+ 
+ 			dap4_din_pj5 {
+ 				nvidia,pins = "dap4_din_pj5";
+-				nvidia,function = "rsvd1";
++				nvidia,function = "i2s4b";
+ 				nvidia,pull = <0x1>;
+ 				nvidia,tristate = <0x0>;
+ 				nvidia,enable-input = <0x1>;
+@@ -2555,7 +2555,7 @@
+ 
+ 			dap4_dout_pj6 {
+ 				nvidia,pins = "dap4_dout_pj6";
+-				nvidia,function = "rsvd1";
++				nvidia,function = "i2s4b";
+ 				nvidia,pull = <0x1>;
+ 				nvidia,tristate = <0x0>;
+ 				nvidia,enable-input = <0x1>;
+@@ -2563,7 +2563,7 @@
+ 
+ 			dap4_fs_pj4 {
+ 				nvidia,pins = "dap4_fs_pj4";
+-				nvidia,function = "rsvd1";
++				nvidia,function = "i2s4b";
+ 				nvidia,pull = <0x1>;
+ 				nvidia,tristate = <0x0>;
+ 				nvidia,enable-input = <0x1>;
+@@ -2571,7 +2571,7 @@
+ 
+ 			dap4_sclk_pj7 {
+ 				nvidia,pins = "dap4_sclk_pj7";
+-				nvidia,function = "rsvd1";
++				nvidia,function = "i2s4b";
+ 				nvidia,pull = <0x1>;
+ 				nvidia,tristate = <0x0>;
+ 				nvidia,enable-input = <0x1>;
+@@ -3153,7 +3153,10 @@
+ 		};
+ 
+ 		default {
+-			gpio-input = <0xd8 0xc 0xd 0xe 0xf 0xe8 0x26 0x95 0x5 0xbc 0xbd 0xbe 0xc1 0xc2 0xa8 0xa9 0xc8 0xca 0x4d 0x4e 0x4c 0x4f 0x32 0x33 0x10 0x11 0x12 0x13 0x14 0x3a 0x3d 0x3e 0x41 0xe4>;
++			gpio-hog;
++			function;
++			gpios = <0xc 0x0 0xd 0x0 0xe 0x0 0xf 0x0 0xd8 0x0 0x4d 0x0 0x4e 0x0 0x4c 0x0 0x4f 0x0>;
++			gpio-input = <0x26 0x95 0x5 0xbc 0xbd 0xbe 0xc1 0xc2 0xa8 0xa9 0xc8 0xca 0x32 0x33 0x10 0x11 0x12 0x13 0x14 0x3a 0x3d 0x3e 0x41 0xe4>;
+ 			gpio-output-low = <0x97 0x98 0xcb 0x38 0x3b 0x3c 0x3f 0x40 0x42>;
+ 			gpio-output-high = <0x6 0xbb>;
+ 			linux,phandle = <0x43>;
+@@ -3763,6 +3766,19 @@
+ 				prod = <0x4 0xfff 0x44b>;
+ 			};
+ 		};
++
++		spi0_0 {
++			#address-cells = <0x1>;
++			#size-cells = <0x0>;
++			compatible = "spidev";
++			reg = <0x0>;
++			spi-max-frequency = <0x1312d00>;
++			nvidia,enable-hw-based-cs;
++			nvidia,cs-setup-clk-count = <0x1e>;
++			nvidia,cs-hold-clk-count = <0x1e>;
++			nvidia,rx-clk-tap-delay = <0x1f>;
++			nvidia,tx-clk-tap-delay = <0x0>;
++		};
+ 	};
+ 
+ 	spi@7000d800 {
