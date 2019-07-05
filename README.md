@@ -1,12 +1,20 @@
-# Jetbot
+# Nanny bot
 
-This is a special branch (`jetbot`), which demonstrates how to run the NVIDIA's Jetbot
-on balenaCloud device.
+Check the [Building a nanny bot](https://forums.balena.io/t/building-a-nanny-bot/10052) topic
+for more information & progress of this project.
+
+## Branch `jetbot`
+
+`jetbot` branch was merged to `master` and then removed.
+
+## Jetbot
+
+For now, this project demonstrates how to run the NVIDIA's Jetbot on balenaCloud device.
 
 **NOTE** The resulting image size is ~10GB. This is due to the fact that it's not
 optimised yet and it still contains all the gcc, g++, nvcc, ... tools.
 
-## Step 1 - JetPack SDK
+### Step 1 - JetPack SDK
 
 * Download [NVIDIA SDK Manager](https://developer.nvidia.com/embedded/jetpack) (JetPack **4.2**)
   * You have to use Ubuntu for example & VMware Fusion if you're on macOS
@@ -47,10 +55,10 @@ nvidia/
 └── nvidia_drivers.tbz2
 ```
 
-## Step 2 - Build & deploy
+### Step 2 - Build & deploy
 
 ```sh
-balena push jetbot
+balena push <appName>
 ```
 
-Replace `jetbot` with your Jetson Nano application name (balenaCloud).
+Replace `<appName>` with your Jetson Nano application name on the balenaCloud.
