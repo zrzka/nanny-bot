@@ -3,9 +3,7 @@
 Check the [Building a nanny bot](https://forums.balena.io/t/building-a-nanny-bot/10052) topic
 for more information & progress of this project.
 
-## Branch `jetbot`
-
-`jetbot` branch was merged to `master` and then removed.
+It's a weekend project (slow progress) and highly experimental one.
 
 ## Jetbot
 
